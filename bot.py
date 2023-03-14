@@ -20,8 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# Telegram Link : https://telegram.dog/Mo_Tech_Group
-# Repo Link : https://github.com/PR0FESS0R-99/Auto-Approved-Bot
+# Telegram Link : https://t.me/dmx_chating
+# Repo Link : https://t.me/dmx_chating
 # License Link : https://github.com/PR0FESS0R-99/Auto-Approved-Bot/blob/Auto-Approved-Bot/LICENSE
 
 from os import environ
@@ -36,17 +36,17 @@ pr0fess0r_99=Client(
 )
 
 CHAT_ID = [int(pr0fess0r_99) for pr0fess0r_99 in environ.get("CHAT_ID", None).split()]
-TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
+TEXT = environ.get("APPROVED_WELCOME_TEXT", "ʜᴇʟʟᴏ {mention}\nᴡᴇʟᴄᴏᴍᴇ ᴛᴏ {title}\n\nyᴏᴜʀ ʀᴇq ᴀᴩᴩʀᴏᴠᴇᴅ")
 APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
 
 @pr0fess0r_99.on_message(filters.private & filters.command(["start"]))
 async def start(client: pr0fess0r_99, message: Message):
     approvedbot = await client.get_me() 
-    button = [[ InlineKeyboardButton("📦 Repo", url="https://github.com/PR0FESS0R-99/Auto-Approved-Bot"), InlineKeyboardButton("Updates 📢", url="t.me/Mo_Tech_YT") ],
-              [ InlineKeyboardButton("➕️ Add Me To Your Chat ➕️", url=f"http://t.me/{approvedbot.username}?startgroup=botstart") ]]
-    await client.send_message(chat_id=message.chat.id, text=f"**__Hello {message.from_user.mention} Iam Auto Approver Join Request Bot Just [Add Me To Your Group Channnl](http://t.me/{approvedbot.username}?startgroup=botstart) || Repo https://github.com/PR0FESS0R-99/Auto-Approved-Bot||**__", reply_markup=InlineKeyboardMarkup(button), disable_web_page_preview=True)
+    button = [[ InlineKeyboardButton("📦 ʀᴇᴩᴏ", url="https://t.me/dmx_chating"), InlineKeyboardButton("ᴜᴩᴅᴀᴛᴇꜱ 🚀", url="t.me/dmx_chating") ],
+              [ InlineKeyboardButton("➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ yᴏᴜʀ ᴄʜᴀᴛ ➕️", url=f"http://t.me/{approvedbot.username}?startgroup=botstart") ]]
+    await client.send_message(chat_id=message.chat.id, text=f"**__Hello {message.from_user.mention} ɪᴀᴍ ᴀᴜᴛᴏ ᴀᴩᴩʀᴏᴠᴇ ᴊᴏɪɴ ʀᴇqᴜᴇꜱᴛ ʙᴏᴛ ᴊᴜꜱᴛ [ᴀᴅᴅ ᴍᴇ ᴛᴏ yᴏᴜʀ ɢʀᴏᴜᴩ ᴄʜᴀɴɴᴇʟ](http://t.me/{approvedbot.username}?startgroup=botstart) || ʀᴇᴩᴏ https://t.me/dmx_chating ||**__", reply_markup=InlineKeyboardMarkup(button), disable_web_page_preview=True)
 
-@pr0fess0r_99.on_chat_join_request(filters.group & filters.chat(CHAT_ID) if CHAT_ID else filters.group)
+@pr0fess0r_99.on_chat_join_request((filters.group | filters.channel) & filters.chat(CHAT_ID) if CHAT_ID else (filters.group | filters.channel))
 async def autoapprove(client: pr0fess0r_99, message: ChatJoinRequest):
     chat=message.chat # Chat
     user=message.from_user # User
